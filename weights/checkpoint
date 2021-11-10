@@ -1,2 +1,2 @@
-model_checkpoint_path: "DenseModel"
-all_model_checkpoint_paths: "DenseModel"
+model_checkpoint_path: "TF_ONLY_MODEL"
+all_model_checkpoint_paths: "TF_ONLY_MODEL"
