@@ -16,6 +16,7 @@ import numpy as np
 #   return model
 
 emotions = ['anger', 'fear', 'joy', 'love', 'sadness', 'surprise']
+
 @tf.autograph.experimental.do_not_convert
 def CreateModel():
   model = tf.keras.models.Sequential()
@@ -40,8 +41,8 @@ def MakePred(ANN,s):
   string = [s]
   string = text_encoder.texts_to_matrix(string, mode="binary")
   pred = ANN.predict(string)
-  # index = np.argmax(pred)
-  # print(list(zip(emotions, pred[0])))
+  index = np.argmax(pred)
+  print(list(zip(emotions, pred[0])))
 
 MakePred(Model, "i had a terrible day today i was so sad.")
 
