@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import RichEditorExample from './RichTextEditor'
 
 
@@ -7,7 +7,7 @@ interface TextEditorProps {
 }
 
 const TextEditor = (props: TextEditorProps) : JSX.Element => {
-    return <RichEditorExample onChange = {(s:any) => console.log(s)}  />
+    return <RichEditorExample onChange = {(s:any) => props.onTextChange(s)}  />
 } 
 
 export default TextEditor
