@@ -34,6 +34,7 @@ Model = CreateModel()
 Model.load_weights("weights/TF_ONLY_MODEL")
 
 
+
 with open("TextEncoder.pkl", "rb") as f:
     text_encoder = pickle.loads(f.read())
 

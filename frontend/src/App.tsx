@@ -36,7 +36,7 @@ function App() {
 
 
   const SendText = (text: string) => {
-    if (text.length == 0) {
+    if (text.length === 0) {
       setSentiments(DefaultSentiments)
       return
     }
