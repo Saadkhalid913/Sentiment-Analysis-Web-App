@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {io , Socket} from "socket.io-client"
 import { Sentiment } from './Components/@types';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Homepage from './Components/Homepage';
 
 
@@ -47,9 +48,7 @@ function App() {
 
 
   return (
-    <div className = "main-content-wrapper">
-      <Homepage Sentiments = {sentiments} setText = {SendText}/>
-    </div>
+      <Homepage Sentiments = {sentiments} setText = {SendText} />
   )
 }
 
