@@ -37,17 +37,15 @@ Model.load_weights("weights/TF_ONLY_MODEL")
 with open("TextEncoder.pkl", "rb") as f:
     text_encoder = pickle.loads(f.read())
 
-def MakePred(ANN,s):
+def MakePred(s):
   string = [s]
   string = text_encoder.texts_to_matrix(string, mode="binary")
-  pred = ANN.predict(string)
-  index = np.argmax(pred)
-  print(list(zip(emotions, pred[0])))
+  pred = list(Model.predict(string)[0])
+  pred = list(map(float, pred))
+  return [{"name": emotions[i], "percentage": pred[i]} for i in range(len(emotions))]
 
-MakePred(Model, "i had a terrible day today i was so sad.")
-
-
-
+if __name__ == "__main__":
+  print(MakePred("Today I had a great day!"))
 
 
 

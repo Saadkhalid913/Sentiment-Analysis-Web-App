@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
-import TextEditor from './TextEditor'
-
+import React, { Component } from 'react';
+import TextEditor from './TextEditor';
+import Sentiments from "./Sentiments";
+import { Sentiment } from './@types';
 interface HomepageProps {
-    setText: (text: string) => void
+    setText: (text: string) => void;
+    Sentiments: Sentiment[] | undefined 
 }
 export default class Homepage extends Component<HomepageProps> {
     state = {}
@@ -11,6 +13,7 @@ export default class Homepage extends Component<HomepageProps> {
         return (
             <div className = "homepage">
                 <TextEditor onTextChange = {s => this.props.setText(s)}/>
+                <Sentiments Sentiments = {this.props.Sentiments} />
             </div>
         )
     }

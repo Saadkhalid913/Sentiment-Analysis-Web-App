@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file
 from flask_socketio import SocketIO
 from flask_cors import CORS, cross_origin
+from Model import MakePred
 
 
 
@@ -12,7 +13,10 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 @socketio.on('text_added', namespace='/')
 def Eval(text: str):
-    print(text)
+    results = MakePred(text)
+    print(results, "\n\n")
+    socketio.emit('sentiments_changed', results, namespace='/')
+
 
 
 @app.route("/", methods = ["GET"])

@@ -14,4 +14,44 @@
   background-color: blanchedalmond;
   width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
 }
+
+.RichEditor-root {
+  width: 100%;
+  height: 100%;
+}
+
+.RichEditor-controls {
+  text-align: center;
+}
+
+.RichEditor-styleButton {
+  padding: 0.25rem
+}
+.RichEditor-activeButton {
+  background-color: rgb(230, 228, 228);
+}
+
+.DraftEditor-editorContainer, .public-DraftEditorPlaceholder-inner {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.sentiment-blob {
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.react-sweet-progress-symbol {
+  font-weight: 800;
+
+}
+
+
