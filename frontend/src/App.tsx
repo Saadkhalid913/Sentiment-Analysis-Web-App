@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {io , Socket} from "socket.io-client"
 import { Sentiment } from './Components/@types';
-import { BrowserRouter, Route } from 'react-router-dom';
 import Homepage from './Components/Homepage';
 
+
+const URI = process.env.NODE_ENV === "production" ? "/" : "http://localhost:5000"
 
 function App() {
   const [socket, setSocket] = useState<Socket | undefined>();
@@ -18,7 +19,7 @@ function App() {
   // @ts-ignore
   useEffect(() => {
     console.log("rendering")
-    const s = io("http://localhost:5000")
+    const s = io(URI)
     setSocket(s)
     return () => s.disconnect()
 
@@ -41,7 +42,8 @@ function App() {
       setSentiments(DefaultSentiments)
       return
     }
-    if (socket) {
+    if (socket) { 
+      text = text.replace( /  +/g, ' ' )
       socket.emit("text_added", text)
     }
   }  
