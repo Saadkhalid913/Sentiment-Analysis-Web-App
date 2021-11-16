@@ -1,0 +1,2 @@
+model_checkpoint_path: "MODEL_WITH_LEMMAS"
+all_model_checkpoint_paths: "MODEL_WITH_LEMMAS"

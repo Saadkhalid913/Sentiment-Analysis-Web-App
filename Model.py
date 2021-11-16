@@ -3,7 +3,11 @@ from tensorflow.keras.models import Sequential
 import re
 import pickle 
 import numpy as np 
-
+import nltk
+from nltk.stem import wordnet, WordNetLemmatizer
+from nltk.corpus import stopwords
+nltk.download("wordnet")
+nltk.download("stopwords")
 
 # def CreateModel() -> Sequential:
 #   model = tf.keras.models.Sequential()
@@ -31,9 +35,20 @@ def CreateModel():
   model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
   return model
 
-Model = CreateModel()
-Model.load_weights("weights/TF_ONLY_MODEL")
 
+LEMMA = True
+Model = CreateModel()
+if not LEMMA:
+  Model.load_weights("weights/TF_ONLY_MODEL")
+else:
+  Model.load_weights("LEMMA_WEIGHTS/MODEL_WITH_LEMMAS")
+
+def GetStopwords():
+  words = stopwords.words("english")
+  words.remove("not")
+  return words
+
+EnglishStopwords = GetStopwords()
 
 
 with open("TextEncoder.pkl", "rb") as f:
@@ -45,9 +60,12 @@ def SplitSentence(s: str):
   s = s.lower()
   s = s.split()
   return s 
+
+lemmatizer = WordNetLemmatizer()
 def MakePred(s):
-  sentence = replace_not_alphabetical_chars(s)
+  sentence = replace_not_alphabetical_chars(s)  
   sentence = SplitSentence(sentence)
+  # sentence = [word for word in sentence if word not in set(EnglishStopwords)]
   sentence = " ".join(sentence)
   string = [sentence]
   string = text_encoder.texts_to_matrix(string, mode="binary")

@@ -7,7 +7,10 @@ interface TextEditorProps {
 }
 
 const TextEditor = (props: TextEditorProps) : JSX.Element => {
-    return <RichEditorExample onChange = {(s:any) => props.onTextChange(s)}  />
+    return <RichEditorExample onChange = {(s:any) => {
+        if (s[s.length - 1] === " ")
+            props.onTextChange(s)
+    }}  />
 } 
 
 export default TextEditor
