@@ -36,7 +36,7 @@ def CreateModel():
   return model
 
 
-LEMMA = True
+LEMMA = False
 Model = CreateModel()
 if not LEMMA:
   Model.load_weights("weights/TF_ONLY_MODEL")
